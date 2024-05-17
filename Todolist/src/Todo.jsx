@@ -11,7 +11,10 @@ const Todo=()=>{
             task,
             status : 'panding'
         }
-        
+        if(!task){
+            alert("Enter any task")
+            return false
+        }
         let newrecord = [...alltask,obj]
         setAllTask(newrecord)
         setTask("")  
@@ -32,21 +35,22 @@ const Todo=()=>{
     }
 
     return(
-        <div align="center">
-            <h1>Add Todo Data</h1>
+        <div align="center" className="main">
+            <h1>Add Todo Data</h1><br/>
             <form action="" onSubmit={handlesubmite}>
-                Todo : <input type="text" onChange={(e)=>setTask(e.target.value)} value={task}/> <button>Submite</button>
+                <h3>Todo : <input className="table1" type="text" onChange={(e)=>setTask(e.target.value)} value={task}/> <button className="tbtn" ><h4>Submite</h4></button></h3> 
             </form>
             <br/><br/><br/>
-
-            <h1>All Todo Data</h1>
-            <table border={5}>
+                        <hr/>
+            <br/><br/>
+            <h1>All Todo Data</h1><br/>
+            <table border={4} className="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Task</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th><h3>Id</h3></th>
+                        <th><h3>Task</h3></th>
+                        <th><h3>Status</h3></th>
+                        <th><h3>Action</h3></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,12 +59,12 @@ const Todo=()=>{
                             const {uid,task,status}= t;
                             return(
                                 <tr>
-                                    <td>{uid}</td>
-                                    <td>{task}</td>
-                                    <td>{status}</td>
+                                    <td><h3>{uid}</h3></td>
+                                    <td><h3>{task}</h3></td>
+                                    <td><h3>{status}</h3></td>
                                     <td>
-                                        <button disabled={status == "confirm"} onClick={()=>confirmTodo(uid)}>Confirm</button>
-                                        <button onClick={()=>deletTodo(uid)}>Delet</button>
+                                        <button className="tbtn" disabled={status == "confirm"} onClick={()=>confirmTodo(uid)}><h4>Confirm</h4></button>
+                                        <button className="tbtn" onClick={()=>deletTodo(uid)}><h4>Delet</h4></button>
                                     </td>
                                 </tr>
                             )
